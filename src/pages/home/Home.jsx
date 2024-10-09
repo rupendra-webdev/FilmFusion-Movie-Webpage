@@ -9,8 +9,8 @@ import HeroBanner from "./homeComponents/HeroBanner";
 function Home() {
   return (
     <MovieProvider>
-      <div className="container mt-5">
-        <HeroBanner />
+      <HeroBanner />
+      <div className="container text-light mt-5">
         <h1 className="text-center mb-4">Trending Movies</h1>
         <Trending />
         <h1 className="text-center my-4">Popular Movies</h1>

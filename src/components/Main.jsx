@@ -5,7 +5,7 @@ import TvShows from "../pages/TvShows";
 import Header from "./Header";
 import Footer from "./Footer";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-
+import Search from "./Search";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,7 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/tvshows",
         element: <TvShows />,
-      },
+      },{
+        path:"/searchQuery",
+        element:<Search/>
+      }
     ],
   },
 ]);
