@@ -4,6 +4,7 @@ import Movies from "../pages/Movies";
 import TvShows from "../pages/TvShows";
 import Header from "./Header";
 import Footer from "./Footer";
+import MovieDetails from "./MovieDetails";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Search from "./Search";
 const router = createBrowserRouter([
@@ -28,10 +29,15 @@ const router = createBrowserRouter([
       {
         path: "/tvshows",
         element: <TvShows />,
-      },{
-        path:"/searchQuery",
-        element:<Search/>
-      }
+      },
+      {
+        path: "/searchQuery",
+        element: <Search />,
+      },
+      {
+        path: "/movieDetails/:id",
+        element: <MovieDetails />,
+      },
     ],
   },
 ]);
