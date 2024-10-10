@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import MovieContext from "../../../context/MovieContext";
 
 function Upcoming() {
@@ -7,7 +8,6 @@ function Upcoming() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  // Split the upcoming movies into chunks of 4 per slide
   const chunkedMovies = [];
   for (let i = 0; i < upcoming.length; i += 4) {
     chunkedMovies.push(upcoming.slice(i, i + 4));
@@ -22,11 +22,13 @@ function Upcoming() {
               {chunk.map((movie) => (
                 <div className="col-md-3 mb-4" key={movie.id}>
                   <div className="card">
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={movie.title}
-                      className="card-img-top"
-                    />
+                  <Link to={`/movie/${movie.id}`}>
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                        className="card-img-top"
+                      />
+                    </Link>
                     <div className="card-body">
                       <h5>{movie.title}</h5>
                     </div>

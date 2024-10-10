@@ -29,7 +29,7 @@ function Popular() {
               {chunk.map((movie) => (
                 <div className="col-md-3 mb-4" key={movie.id}>
                   <div className="card">
-                    <Link to={`/movieDetails/${movie.id}`}>
+                    <Link to={`/movie/${movie.id}`}>
                       <img
                         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                         alt={movie.title}
