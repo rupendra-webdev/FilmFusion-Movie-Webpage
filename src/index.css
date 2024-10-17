@@ -47,3 +47,25 @@ body {
   border-radius: 5px;
   cursor: pointer;
 } */
+.circle-rating {
+  width: 100px; /* Set a fixed size for the circle */
+  height: 100px; /* Set a fixed size for the circle */
+  border-radius: 50%; /* Make it circular */
+  background-color: #2c2c2c; /* Background color for the circle */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+  position: relative; /* Relative positioning for absolute children */
+}
+
+.circle-progress-bar {
+  border-radius: 50%; /* Ensure the progress bar is also circular */
+  position: absolute; /* Absolute positioning to fit inside the circle */
+  width: 100%; /* Full width of the circle */
+  height: 100%; /* Full height of the circle */
+  background-color: transparent; /* Transparent background for the progress bar */
+}
+
+.rating-text {
+  font-size: 34px; /* Font size for the rating text */
+  font-weight: bold; /* Bold text for emphasis */
+  z-index: 1; /* Ensure the text is above the progress bar */
+}

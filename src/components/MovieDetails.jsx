@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+// import CircleRating from "CircleRating";
 
 const API_KEY = "c6fb36a8605634e1c243f9e0317511cc";
 const base_url = "https://api.themoviedb.org/3";
@@ -38,7 +39,7 @@ function MovieDetails() {
     <div className="container mt-4">
       <h1>{movie.title}</h1>
       <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "path_to_placeholder_image"}
         alt={movie.title}
         className="img-fluid"
       />
@@ -49,6 +50,8 @@ function MovieDetails() {
       <p>
         <strong>Rating:</strong> {movie.vote_average}
       </p>
+      {/* Pass movie rating to CircleRating */}
+      {/* <CircleRating rating={movie.vote_average} /> */}
     </div>
   );
 }

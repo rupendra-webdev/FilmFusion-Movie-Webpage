@@ -1,54 +1,23 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import MovieContext from "../../../context/MovieContext";
+import MovieCarousel from "../../../components/MovieCarousel";
 
 function Upcoming() {
   const { upcoming, loading, error } = useContext(MovieContext);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-
-  const chunkedMovies = [];
-  for (let i = 0; i < upcoming.length; i += 4) {
-    chunkedMovies.push(upcoming.slice(i, i + 4));
-  }
+  if (loading) return <div className="text-center text-lg">Loading...</div>;
+  if (error) return <div className="text-center text-red-500">Error: {error}</div>;
 
   return (
-    <div id="upcomingMoviesCarousel" className="carousel slide" data-bs-ride="carousel">
-      <div className="carousel-inner">
-        {chunkedMovies.map((chunk, index) => (
-          <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
-            <div className="row">
-              {chunk.map((movie) => (
-                <div className="col-md-3 mb-4" key={movie.id}>
-                  <div className="card">
-                  <Link to={`/movie/${movie.id}`}>
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                        alt={movie.title}
-                        className="card-img-top"
-                      />
-                    </Link>
-                    <div className="card-body">
-                      <h5>{movie.title}</h5>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Carousel controls */}
-      <button className="carousel-control-prev" type="button" data-bs-target="#upcomingMoviesCarousel" data-bs-slide="prev">
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button className="carousel-control-next" type="button" data-bs-target="#upcomingMoviesCarousel" data-bs-slide="next">
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
-      </button>
+    <div>
+      <MovieCarousel movies={upcoming} />
+      {loading && (
+        <div className="flex gap-4 justify-center px-4 py-4">
+          {Array.from({ length: 6 }, (_, index) => (
+            <div key={index} className="bg-gray-800 w-28 h-44 animate-pulse rounded-lg shadow-md"></div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
