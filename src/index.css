@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 :root {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 16px;
   line-height: 1;
   font-weight: 00;
@@ -39,11 +36,9 @@ body {
   background-color: var(--black);
 }
 
-
 .opacity_layer_bg {
   background: linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #04152d 79.17%);
 }
-
 
 /* search btn and home btn (when resultnot found in SearchResult.jsx) */
 .search_btn_gradient {
@@ -55,13 +50,10 @@ body {
   background: linear-gradient(98.37deg, #c43921 0.99%, #ef3b16 100%);
 }
 
-
-
 /* scroll bar display none  */
 ::-webkit-scrollbar {
   display: none;
 }
-
 
 .top {
   background: rgba(0, 0, 0, 0.25);
@@ -82,8 +74,6 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
-
 .animation-searchBar {
   animation: animateMobileMenu 0.3s ease forwards;
 }
@@ -97,7 +87,6 @@ body {
     transform: translateY(0);
   }
 }
-
 
 /* Loading skeleton */
 .skeleton {
@@ -113,11 +102,13 @@ body {
   bottom: 0;
   left: 0;
   transform: translateX(-100%);
-  background-image: linear-gradient(90deg,
-      rgba(25, 55, 99, 0) 0,
-      rgba(25, 55, 99, 0.2) 20%,
-      rgba(25, 55, 99, 0.5) 60%,
-      rgba(25, 55, 99, 0));
+  background-image: linear-gradient(
+    90deg,
+    rgba(25, 55, 99, 0) 0,
+    rgba(25, 55, 99, 0.2) 20%,
+    rgba(25, 55, 99, 0.5) 60%,
+    rgba(25, 55, 99, 0)
+  );
   animation: shimmer 0.9s infinite;
   content: "";
 }
@@ -127,10 +118,6 @@ body {
     transform: translateX(100%);
   }
 }
-
-
-
-
 
 /* used in carousel.jsx */
 .lazy-load-image-background {
@@ -150,7 +137,6 @@ img {
   object-position: center;
 }
 
-
 /* used in CircleRating.jsx  */
 .CircularProgressbar-text {
   font-size: 34px;
@@ -164,18 +150,12 @@ img {
 
 .shadow-on-hoverIcon:hover {
   box-shadow: 0 0 0.625em var(--pink);
-
 }
-
-
 
 /* used in DetailsBanner.jsx */
 .opacity-layer-bg-gradient {
-  background: linear-gradient(180deg,
-      rgba(4, 21, 45, 0) 0%,
-      #04152d 79.17%);
+  background: linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #04152d 79.17%);
 }
-
 
 /* used in PayBtn.jsx  */
 .playbtn {
@@ -232,8 +212,6 @@ img {
   stroke: var(--pink);
 }
 
-
-
 /* for popup video  */
 .videoPopup {
   display: flex;
@@ -247,7 +225,6 @@ img {
   opacity: 0;
   visibility: hidden;
   z-index: 9;
-
 }
 
 .videoPopup .opacityLayer {
@@ -293,9 +270,6 @@ img {
   transform: scale(1);
 }
 
-
-
-
 /* react-select-container */
 .react-select-container.genresDD {
   width: 100%;
@@ -329,8 +303,12 @@ img {
   border-radius: 20px;
 }
 
-.react-select-container .react-select__value-container .react-select__placeholder,
-.react-select-container .react-select__value-container .react-select__input-container {
+.react-select-container
+  .react-select__value-container
+  .react-select__placeholder,
+.react-select-container
+  .react-select__value-container
+  .react-select__input-container {
   color: white;
   margin: 0 10px;
 }
@@ -344,17 +322,23 @@ img {
   border-radius: 10px;
 }
 
-.react-select-container .react-select__multi-value .react-select__multi-value__label {
+.react-select-container
+  .react-select__multi-value
+  .react-select__multi-value__label {
   color: white;
 }
 
-.react-select-container .react-select__multi-value .react-select__multi-value__remove {
+.react-select-container
+  .react-select__multi-value
+  .react-select__multi-value__remove {
   background-color: transparent;
   color: white;
   cursor: pointer;
 }
 
-.react-select-container .react-select__multi-value .react-select__multi-value__remove:hover {
+.react-select-container
+  .react-select__multi-value
+  .react-select__multi-value__remove:hover {
   color: #1c4b91;
 }
 
@@ -363,8 +347,6 @@ img {
   margin: 0;
   padding: 0;
 }
-
-
 
 /* used in - SwitchTab.jsx code */
 .tabItem {
@@ -379,10 +361,6 @@ img {
   background-image: var(--gradient);
   transition: left cubic-bezier(0.88, -0.35, 0.565, 1.35) 0.4s;
 }
-
-
-
-
 
 /* used in OfficialVideoSection.jsx for playBtn  */
 .videoThumbnail svg {
@@ -425,15 +403,13 @@ img {
   stroke: var(--pink);
 }
 
-
-
 /* used for Spinner.jsx  */
 .custom-loader {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background:
-    radial-gradient(farthest-side, #c43921 94%, #0000) top/16px 16px no-repeat,
+  background: radial-gradient(farthest-side, #c43921 94%, #0000) top/16px 16px
+      no-repeat,
     conic-gradient(#0000 30%, #c43921);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 16px), #000 0);
   animation: s3 0.5s infinite linear;
@@ -441,10 +417,6 @@ img {
 
 @keyframes s3 {
   100% {
-    transform: rotate(1turn)
+    transform: rotate(1turn);
   }
 }
-
-
-
-

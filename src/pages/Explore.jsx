@@ -9,8 +9,6 @@ import ContentWrapper from "../components/ContentWrapper";
 import MovieCard from "../components/MovieCard";
 import Spinner from "../components/Spinner";
 
-
-
 let filters = {};
 
 const sortbyData = [
@@ -26,10 +24,7 @@ const sortbyData = [
   { value: "original_title.asc", label: "Title (A-Z)" },
 ];
 
-
-
 const Explore = () => {
-
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -41,18 +36,16 @@ const Explore = () => {
 
   const fetchInitialData = () => {
     setLoading(true);
-    fetchDataFromApi(`/discover/${mediaType}`, filters)
-      .then((res) => {
-        setData(res);
-        setPageNum(prev => prev + 1);
-        setLoading(false);
-      })
-  }
-
+    fetchDataFromApi(`/discover/${mediaType}`, filters).then((res) => {
+      setData(res);
+      setPageNum((prev) => prev + 1);
+      setLoading(false);
+    });
+  };
 
   const fetchNextPageData = () => {
-    fetchDataFromApi(`/discover/${mediaType}?page=${pageNum}`, filters)
-      .then((res) => {
+    fetchDataFromApi(`/discover/${mediaType}?page=${pageNum}`, filters).then(
+      (res) => {
         if (data?.results) {
           setData({
             ...data,
@@ -62,11 +55,11 @@ const Explore = () => {
           setData(res);
         }
         setPageNum((prev) => prev + 1);
-      });
-  }
+      }
+    );
+  };
 
-
-  // Effect Hook 
+  // Effect Hook
   useEffect(() => {
     filters = {};
     setData(null);
@@ -74,20 +67,17 @@ const Explore = () => {
     setSortby(null);
     setGenre(null);
     fetchInitialData();
-
   }, [mediaType]);
 
-
   const onChange = (selectedItems, action) => {
-    if (action.name === 'sortby') {
+    if (action.name === "sortby") {
       setSortby(selectedItems);
-      if (action.name !== 'clear') {
+      if (action.name !== "clear") {
         filters.sort_by = selectedItems.value;
       } else {
-        delete filters.sort_by
+        delete filters.sort_by;
       }
     }
-
 
     if (action.name === "genres") {
       setGenre(selectedItems);
@@ -106,9 +96,6 @@ const Explore = () => {
     fetchInitialData();
   };
 
-
-
-
   return (
     <div className="min-h-[700px] pt-[100px] ">
       <ContentWrapper>
@@ -116,9 +103,7 @@ const Explore = () => {
         <div className="flex flex-col md:flex-row justify-between mb-[25px]  ">
           {/* Page Title */}
           <div className="text-2xl text-white mb-5 md:mb-0 ">
-            {
-              mediaType === 'tv' ? 'Explore Tv Shows' : 'Explore Movies'
-            }
+            {mediaType === "tv" ? "Explore Tv Shows" : "Explore Movies"}
           </div>
 
           {/* filters */}
@@ -150,48 +135,37 @@ const Explore = () => {
           </div>
         </div>
 
-
         {loading && <Spinner initial={true} />}
 
-        {
-          !loading && (
-            <>
-              {
-                data?.results?.length > 0 ? (
-                  <InfiniteScroll
-                    className="flex flex-wrap gap-[10px] mb-[50px] md:gap-5 "
-                    dataLength={data?.results?.length || []}
-                    next={fetchNextPageData}
-                    hasMore={pageNum <= data?.total_pages}
-                    loader={<Spinner />}
-                  >
-                    {
-                      data?.results?.map((item, ind) => {
-                        if (item.media_type === 'person') return;
+        {!loading && (
+          <>
+            {data?.results?.length > 0 ? (
+              <InfiniteScroll
+                className="flex flex-wrap gap-[10px] mb-[50px] md:gap-5 "
+                dataLength={data?.results?.length || []}
+                next={fetchNextPageData}
+                hasMore={pageNum <= data?.total_pages}
+                loader={<Spinner />}
+              >
+                {data?.results?.map((item, ind) => {
+                  if (item.media_type === "person") return;
 
-                        return (
-                          <MovieCard
-                            key={ind}
-                            data={item}
-                            mediaType={mediaType}
-                          />
-                        )
-                      })}
-                  </InfiniteScroll>
-                )
-                  :
-
-                  // if There is no data 
-                  (<span className="flex items-center pt-[15%] justify-center text-2xl text-orange font-bold">
-                    Sorry, Results Not Found...!
-                  </span>)
-              }
-            </>
-          )
-        }
+                  return (
+                    <MovieCard key={ind} data={item} mediaType={mediaType} />
+                  );
+                })}
+              </InfiniteScroll>
+            ) : (
+              // if There is no data
+              <span className="flex items-center pt-[15%] justify-center text-2xl text-orange font-bold">
+                Sorry, Results Not Found...!
+              </span>
+            )}
+          </>
+        )}
       </ContentWrapper>
     </div>
-  )
-}
+  );
+};
 
-export default Explore
+export default Explore;
