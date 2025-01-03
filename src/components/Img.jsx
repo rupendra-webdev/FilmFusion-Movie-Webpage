@@ -1,18 +1,17 @@
-import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 const Img = ({ src, className, alt }) => {
     return (
         <LazyLoadImage
-            src={src}
+            className={className || 'absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden'}
             alt={alt || 'Image'}
-            className={className || 'rounded-xl'}
             effect='blur'
-            fluid // To ensure responsive design
+            src={src}
         />
-    );
+    )
 }
 
-export default Img;
+
+export default Img

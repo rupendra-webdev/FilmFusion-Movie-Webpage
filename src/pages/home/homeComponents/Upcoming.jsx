@@ -7,23 +7,20 @@ import useFetch from '../../../hooks/useFetch'
 
 
 
-
-const Popular = () => {
+const Upcoming = () => {
     const [endpoint, setEndpoint] = useState('movie')
 
-    const { data, loading } = useFetch(`/${endpoint}/popular`);
+    const { data, loading } = useFetch(`/${endpoint}/upcoming`);
 
-    const onTabChange = (tab) => { 
-        setEndpoint(tab === 'Movies' ? 'movie' : 'tv')
-    }
+
 
     return (
         // carousel section 
         <div className='relative mb-[70px] '>
             <ContentWrapper className='flex items-center justify-between mb-5 '>
-                <span className='text-2xl text-normal '>What's Popular</span>
+                <span className='text-2xl text-normal '>Upcoming</span>
 
-                <SwitchTabs data={['Movies', 'TV Shows']} onTabChange={onTabChange} />
+                <SwitchTabs data={['Movies']} />
             </ContentWrapper >
 
             <Carousel data={data?.results} loading={loading} endpoint={endpoint} />
@@ -32,4 +29,4 @@ const Popular = () => {
     )
 }
 
-export default Popular
+export default Upcoming
