@@ -8,12 +8,12 @@ import { getApiConfiguration, getGeners } from "./redux/slices/homeSlice";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./Pages/home/Home.jsx";
-import Details from "./Pages/details/Details";
-import CreditDetails from "./Pages/details/creditDetails";
-import SearchResult from "./Pages/SearchResult";
-import Explore from "./Pages/Explore";
-import PageNotFound from "./Pages/PageNotFound";
+import Home from "./pages/home/Home"
+import Details from "./pages/details/Details";
+import CreditDetails from "./pages/details/creditDetails";
+import SearchResult from "./pages/SearchResult";
+import Explore from "./pages/Explore";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
